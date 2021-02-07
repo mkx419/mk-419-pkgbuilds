@@ -1,0 +1,25 @@
+_pkgname=fascode-system-dashboard
+pkgname=fascode-system-dashboard-git
+pkgver=v0.1.0
+pkgrel=1
+pkgdesc="GUI system monitor written in Python"
+arch=("any")
+url="https://github.com/FascodeNet/${_pkgname}"
+license=("MIT")
+depends=(
+    "gtk3"
+    "libdazzle"
+    "python"
+    "python-cairo"
+    "python-gobject"
+    "python-psutil"
+)
+conflicts=("fascode-system-dashboard")
+sha256sums=("SKIP")
+makedepends+=("git")
+source=("git+${url}.git")
+
+package() {
+    cd "${srcdir}/${_pkgname}"
+    make install DESTDIR="${pkgdir}"
+}
